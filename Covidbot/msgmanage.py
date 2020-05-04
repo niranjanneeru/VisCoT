@@ -5,11 +5,11 @@ def if_start():
 See my Creators Over here
 https://meenakshi2604.github.io/Covid-tracker/
         
-I work for VisCoT App find the application in the above link
+I work for VisCoT app find the application in the above link
         
 See My Manual :-  /help
         
-I am Capable of Showing you
+I am capable of showing you
         
 /global -> The Global data of Havoc Caused by Covid19
 /checker-> Covid Symptom Checker
@@ -33,13 +33,11 @@ def helper():
 def info():
     return '''Developer Info
       
+Niranjan B
 @prof_mo_riarty
-https://t.me/prof_mo_riarty
-
 github.com/Niranjanprof
-
 niranjannb@protonmail.com
-niranjannb7777@gmail.com    
+https://www.linkedin.com/in/niranjanneeru/   
     '''
 
 

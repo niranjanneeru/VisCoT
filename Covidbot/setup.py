@@ -15,19 +15,20 @@ def text(msg):
     elif msg.startswith('/global'):
         return msgmanage.global_()
     elif msg.startswith('/checker'):
-        tracker.checkUpdates(update_id=update_id-1)
+        global update_id
+        update_id = tracker.checkUpdates(update_id=update_id -1)
         return '''Thanks for Using me
 
-See my Creators Over here
+See my creators over here
 https://meenakshi2604.github.io/Covid-tracker/
 
 I work for VisCoT App find the application in the above link
 
-See My Manual :-  /help
+See Commands :-  /help
 '''
     else:
         return '''Try using /help
-        See Commands'''
+        See commands'''
 
 
 def make_reply(msg):

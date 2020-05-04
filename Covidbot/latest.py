@@ -1,38 +1,19 @@
 import requests
 
-
-def convert(number):
-    accum = 0
-    numbers = number.split(',')
-    for i in numbers:
-        accum = accum * 1000 + int(i)
-    return accum
-
-
 def latest():
     try:
-        info = requests.get('https://www.worldometers.info/coronavirus/').text
+        # Collects Data from the api
+        response = requests.get('https://coronavirus-tracker-api.herokuapp.com/v2/locations?timelines=true')
     except:
-        return "BAD Connection"
+        return '''Bad Connection'''
+# Converts to python dictionary
+    data = response.json()
 
-    lines = info.split('\n')
-    flag = 0
-    comfirmed = ''
-    recovered = ''
-    death = ''
-    for line in lines:
-        if flag == 1:
-            flag = 0
-            words = line.split('>')
-            recovered = words[1].split('<')[0]
-        if line.startswith('<title>'):
-            words = line.split()
-            confirmed = words[words.index('Cases') - 1]
-            death = words[words.index('Deaths') - 1]
+    confirmed = data['latest']['confirmed']
+    deaths = data['latest']['deaths']
+    last_updated = data['locations'][0]['last_updated'][:10]
 
-        if line.startswith('<div class="maincounter-number" style="color:#8ACA2B ">'):
-            flag = 1
-
-    active = (convert(confirmed) - convert(death) - convert(recovered))
-    msg = f"Global Covid Data\n\nConfirmed Cases:  {confirmed}\nDeath Toll: {death}\nRecovered Cases:  {recovered}\nActive:     {(convert(confirmed) - convert(death) - convert(recovered)):,}"
+    msg = f"Global Covid Data as last updated on {last_updated}\n\nConfirmed Cases:  {confirmed:,}\nDeath Toll: {deaths:,}"
+    print(msg)
     return msg
+latest()

@@ -2,12 +2,13 @@ from bot import telegram_chatbot
 
 bot = telegram_chatbot("config.cfg")
 def help(msg):
-    if msg =='/help':
+    if msg =='/abort':
         return True
 
 def age():
     return '''How old are you?
-    /help to quit the process'''
+    
+    /abort to quit the process'''
 
 
 def gender():
@@ -16,8 +17,9 @@ def gender():
     /Female
     /Others
     
-    Click to the desired to proceed
-    /help to quit the process'''
+    Click the desired
+    
+    /abort to quit the process'''
 
 
 def temp():
@@ -27,8 +29,9 @@ def temp():
 /HighFever (>102°F)
 /Unaware
 
-Click on Desired Category
-/help to quit the process
+Click on desired category
+
+/abort to quit the process
     '''
 
 
@@ -44,7 +47,8 @@ def symptom():
 Enter the appropriate numbers with a space in between
 
 eg :- 2 3 4
-/help to quit the process'''
+
+/abort to quit the process'''
 
 
 def symptom2():
@@ -59,7 +63,8 @@ def symptom2():
 Enter the appropriate numbers with a space in between
 
 eg :- 2 3 4
-/help to quit the process'''
+
+/abort to quit the process'''
 
 
 def travel():
@@ -70,7 +75,8 @@ def travel():
 4.Close contact with a person with Fever and Cough in last 14 days
 
 Enter the appropriate number
-/help to quit the process    '''
+
+/abort to quit the process    '''
 
 
 def end(grade):
@@ -112,8 +118,8 @@ def checkUpdates(update_id=None):
                         except:
                             message = None
                         from_ = item["message"]["from"]["id"]
-                    if help():
-                        return
+                    if help(message):
+                        return update_id
                     if not message.isdigit():
                         bot.send_message('''Invalid Input''', from_)
                         bot.send_message(age(), from_)
@@ -131,8 +137,8 @@ def checkUpdates(update_id=None):
                         except:
                             message = None
                         from_ = item["message"]["from"]["id"]
-                    if help():
-                        return
+                    if help(message):
+                        return update_id
                     if not (message == '/Male' or message == '/Female' or message == '/Others'):
                         bot.send_message('''Invalid Gender''', from_)
                         bot.send_message(gender(), from_)
@@ -150,8 +156,8 @@ def checkUpdates(update_id=None):
                         except:
                             message = None
                         from_ = item["message"]["from"]["id"]
-                    if help():
-                        return
+                    if help(message):
+                        return update_id
                     if not (
                             message == '/Normal' or message == '/Fever' or message == '/HighFever' or message == "/Unaware"):
                         bot.send_message('''Invalid''', from_)
@@ -174,8 +180,8 @@ def checkUpdates(update_id=None):
                         except:
                             message = None
                         from_ = item["message"]["from"]["id"]
-                    if help():
-                        return
+                    if help(message):
+                        return update_id
                     if not (
                             '1' in message or '2' in message or '3' in message or '4' in message or '5' in message or '6' in message):
                         bot.send_message('''Invalid''', from_)
@@ -201,8 +207,8 @@ def checkUpdates(update_id=None):
                         except:
                             message = None
                         from_ = item["message"]["from"]["id"]
-                    if help():
-                        return
+                    if help(message):
+                        return update_id
                     if not (
                             '1' in message or '2' in message or '3' in message or '4' in message or '5' in message or '6' in message):
                         bot.send_message('''Invalid''', from_)
@@ -228,16 +234,17 @@ def checkUpdates(update_id=None):
                         except:
                             message = None
                         from_ = item["message"]["from"]["id"]
-                    if help():
-                        return
+                    if help(message):
+                        return update_id
                     if not ('1' in message or '2' in message or '3' in message or '4' in message):
                         bot.send_message('''Invalid''', from_)
                         bot.send_message(travel(), from_)
                     else:
                         break
-            if '2' in message:
+            if '3' in message:
                 grade += 5
-            elif '3' in message:
+            elif '4' in message:
                 grade += 20
             bot.send_message(end(grade), from_)
+            return update_id
 
