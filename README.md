@@ -73,4 +73,4 @@ Licensed under the [GNU GPL](LICENSE)
 
 ---
 
-Mention This [Repo](https://github.com/Niranjanprof/Covid-19-Tracker) while you use this in your projects :)
+Mention This [Repo](https://github.com/Niranjanprof/VisCoT) while you use this in your projects :)
