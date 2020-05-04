@@ -17,7 +17,7 @@ def latest():
 
     lines = info.split('\n')
     flag = 0
-    confirmed = ''
+    comfirmed = ''
     recovered = ''
     death = ''
     for line in lines:
@@ -33,11 +33,6 @@ def latest():
         if line.startswith('<div class="maincounter-number" style="color:#8ACA2B ">'):
             flag = 1
 
-    msg = f'''Global Covid Data
-
-Confirmed Cases:  {confirmed}
-Death Toll: {death}
-Recovered Cases:  {recovered}
-Active:     {(convert(confirmed) - convert(death) - convert(recovered)):,}'''
-
+    active = (convert(confirmed) - convert(death) - convert(recovered))
+    msg = f"Global Covid Data\n\nConfirmed Cases:  {confirmed}\nDeath Toll: {death}\nRecovered Cases:  {recovered}\nActive:     {(convert(confirmed) - convert(death) - convert(recovered)):,}"
     return msg

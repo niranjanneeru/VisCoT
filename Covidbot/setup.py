@@ -15,7 +15,7 @@ def text(msg):
     elif msg.startswith('/global'):
         return msgmanage.global_()
     elif msg.startswith('/checker'):
-        tracker.checkUpdates(update_id=update_id)
+        tracker.checkUpdates(update_id=update_id-1)
         return '''Thanks for Using me
 
 See my Creators Over here
@@ -26,7 +26,8 @@ I work for VisCoT App find the application in the above link
 See My Manual :-  /help
 '''
     else:
-        return '''Invalid Inputs try /help'''
+        return '''Try using /help
+        See Commands'''
 
 
 def make_reply(msg):
