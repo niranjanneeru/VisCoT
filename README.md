@@ -1,5 +1,8 @@
 # VisCoT Telegram Chat Bot 
 
+Working bot
+Check __[VisCoT](t.me/VisCoTbot)__
+
 Symptom Checker and Global data Provider
 ---
 ___
